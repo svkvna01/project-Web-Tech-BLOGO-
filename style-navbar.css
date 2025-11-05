@@ -46,13 +46,14 @@
 }
 
 .search-bar input {
-    width: 200px;
+    width: 200px; !important
 }   
 
 /* Zorg dat inhoud niet onder navbar zit */
 body {
   margin-top: 90px;
 }
+
 
 
 
