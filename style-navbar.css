@@ -45,14 +45,15 @@
   width: auto;
 }
 
-.search-bar {
-    width: 100px;
+.search-bar input {
+    width: 200px;
 }   
 
 /* Zorg dat inhoud niet onder navbar zit */
 body {
   margin-top: 90px;
 }
+
 
 
 
