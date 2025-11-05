@@ -45,14 +45,18 @@
   width: auto;
 }
 
-.search-bar input {
-    width: 200px; !important
-}   
+.topbar .search-bar input[type=text] {
+    width: 200px;
+    padding: 6px;
+    border: none;
+    font-size: 17px;
+}
 
 /* Zorg dat inhoud niet onder navbar zit */
 body {
   margin-top: 90px;
 }
+
 
 
 
