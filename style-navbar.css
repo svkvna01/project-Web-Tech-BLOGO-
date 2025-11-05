@@ -50,12 +50,15 @@
     padding: 6px;
     border: none;
     font-size: 17px;
+    box-sizing: border-box;  
+    display: block;           
 }
 
 /* Zorg dat inhoud niet onder navbar zit */
 body {
   margin-top: 90px;
 }
+
 
 
 
