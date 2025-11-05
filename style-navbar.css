@@ -1,0 +1,43 @@
+.topbar{
+    background-color:var(--login-box-color);
+    position: fixed;
+    width:100%;
+    top: 0%;
+    left: 0%;
+    height: 7%;
+    z-index: 999; 
+    justify-content: space-evenly;
+    align-items: center;
+    display: flex;
+    
+}
+
+.topbar ul {
+    margin: 0;    
+    display: flex;      
+    padding:  0;       
+    list-style-type: none;  
+}
+
+.topbar ul a {
+    color: white;
+    width: 25%;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px;
+}
+
+.topbar ul a :hover{
+    background-color: var(--button-hover-color);
+}
+
+/* Logo links */
+.logoNavbar {
+  height: 80%; 
+  width: auto;
+}
+
+/* Zorg dat inhoud niet onder navbar zit */
+body {
+  margin-top: 90px;
+}
