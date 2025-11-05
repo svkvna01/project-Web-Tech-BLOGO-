@@ -45,7 +45,7 @@
   width: auto;
 }
 
-.topbar .search-bar input[type=text] {
+.search-bar input[type=text] {
     width: 200px;
     padding: 6px;
     border: none;
@@ -56,6 +56,7 @@
 body {
   margin-top: 90px;
 }
+
 
 
 
