@@ -30,6 +30,14 @@
 .topbar ul a:hover{
     background-color: var(--button-hover-color);
 }
+.topnav input[type=text] {
+  float: right;
+  padding: 6px;
+  border: none;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+}
 
 /* Logo links */
 .logoNavbar {
@@ -41,4 +49,5 @@
 body {
   margin-top: 90px;
 }
+
 
