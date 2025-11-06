@@ -31,14 +31,6 @@
     background-color: var(--button-hover-color);
 }
 
-/* .topnav input[type=text] { 
-  float: right; 
-  padding: 6px;
-  border: none;
-  margin-top: 8px;
-  margin-right: 16px;
-  font-size: 17px; */
-
 /* Logo links */
 .logoNavbar {
   height: 80%; 
@@ -55,6 +47,7 @@
     border: none;
     font-size: 17px;
     box-sizing: border-box;
+    border-radius: 20px;
     background-color: white;
 }
 
@@ -62,6 +55,7 @@
 body {
   margin-top: 90px;
 }
+
 
 
 
