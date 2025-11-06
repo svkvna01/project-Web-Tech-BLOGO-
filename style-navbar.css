@@ -46,20 +46,23 @@
 }
 
 .search-bar {
-    background-color: yellow !important;
-    width: 400px !important;
+    width: 400px;
 }
 
-.search-bar input[type="text"] {
-    background-color: green !important;
-    width: 100% !important;
-    padding: 6px !important;
+.search-bar input {
+    width: 100%;
+    padding: 6px;
+    border: none;
+    font-size: 17px;
+    box-sizing: border-box;
+    background-color: white;
 }
 
 /* Zorg dat inhoud niet onder navbar zit */
 body {
   margin-top: 90px;
 }
+
 
 
 
