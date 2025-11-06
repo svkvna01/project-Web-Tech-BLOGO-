@@ -50,7 +50,7 @@
     width: 400px !important;
 }
 
-.search-bar input {
+.search-bar input[type="text"] {
     background-color: green !important;
     width: 100% !important;
     padding: 6px !important;
@@ -60,6 +60,7 @@
 body {
   margin-top: 90px;
 }
+
 
 
 
