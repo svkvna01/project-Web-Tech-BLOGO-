@@ -37,10 +37,12 @@
   width: auto;
 }
 
+/* maak search bar breder */
 .search-bar {
     width: 400px;
 }
 
+/* layout van search bar*/
 .search-bar input {
     width: 100%;
     padding: 6px;
@@ -55,6 +57,7 @@
 body {
   margin-top: 90px;
 }
+
 
 
 
