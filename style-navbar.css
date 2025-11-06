@@ -20,7 +20,7 @@
 }
 
 .topbar ul a {
-    color: red;
+    color: white;
     width: 25%;
     text-decoration: none;
     text-align: center;
@@ -46,16 +46,17 @@
 }
 
 .search-bar input[type=text] {
-    width: 200px;
-    padding: 6px;
-    border: none;
-    font-size: 17px;     
+    width: 200px !important;
+    padding: 6px !important;
+    border: none !important;
+    font-size: 17px !important;     
 }
 
 /* Zorg dat inhoud niet onder navbar zit */
 body {
   margin-top: 90px;
 }
+
 
 
 
