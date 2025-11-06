@@ -45,17 +45,16 @@
   width: auto;
 }
 
-.search-bar input[type=text] {
-    width: 200px !important;
-    padding: 6px !important;
-    border: none !important;
-    font-size: 17px !important;     
+.search-bar {
+    background-color: yellow !important;
+    width: 400px !important;
 }
 
 /* Zorg dat inhoud niet onder navbar zit */
 body {
   margin-top: 90px;
 }
+
 
 
 
