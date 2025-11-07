@@ -7,7 +7,7 @@
   --button-color: #073B4C;
   --button-hover-color:#046c8e;
   --texte-button-color: white;
-  --planner-box-color: #e8ada3;
+
 }
 
 
@@ -24,12 +24,6 @@ body {
   justify-content: center;
   align-items: center;
 }
-
-#map { height: 600px; 
-      width: 800px;
-}
-
-
 
 
 
