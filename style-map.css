@@ -1,14 +1,12 @@
 #map-layout {
     display: flex;
     margin: auto;
+    margin-top: 6%;
 }
 
 #map-sidebar {
-    width: 110px;
+    width: 120px;
     background: #FAEBDD;
-    padding: 20px;
-    padding-top: 0;
-    border-right: 1px solid #ccc;
     font-family:var(--texte-font);
     font-size:x-large;
     color: rgb(9, 33, 40);
@@ -30,4 +28,3 @@
     width: 120px; 
    
 }
-
