@@ -7,6 +7,7 @@
     width: 110px;
     background: #FAEBDD;
     padding: 20px;
+    padding-top: 0;
     border-right: 1px solid #ccc;
     font-family:var(--texte-font);
     font-size:x-large;
@@ -24,7 +25,7 @@
     position: absolute;
     top: 7%;
     left: 185px; 
-    padding-top: 25px ;
+    padding-top: 20px ;
     font-family: var(--texte-font);
     width: 120px; 
    
