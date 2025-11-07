@@ -1,0 +1,32 @@
+#map-layout {
+    display: flex;
+    margin: auto;
+}
+
+#map-sidebar {
+    width: 110px;
+    background: #FAEBDD;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    font-family:var(--texte-font);
+    font-size:x-large;
+    color: rgb(9, 33, 40);
+    
+}
+
+#map {
+    height: 600px ;
+    width: 800px ;
+}
+
+.map-title {
+    color: rgb(9, 33, 40);
+    position: absolute;
+    top: 7%;
+    left: 185px; 
+    padding-top: 25px ;
+    font-family: var(--texte-font);
+    width: 120px; 
+   
+}
+
