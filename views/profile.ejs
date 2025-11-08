@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Profile</title>
-  <link rel="stylesheet" href="/style.css">
-  <link rel="stylesheet" href="/style-navbar.css">
-  <style>
-            button {
-                background-color: var(--button-color) ;
-                color: var(--texte-button-color);
-                border: none;
-                padding: 10px 20px;
-                border-radius: 5px;
-                cursor: pointer;
-            }
-            .profilepage_content table {
-                border-spacing: 40px; /* zorgt voor afstand tussen kolommen */
-                border-collapse: separate; /* belangrijk voor border-spacing */
-            }
-        </style>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style-navbar.css">
+    <style>
+        button {
+            background-color: var(--button-color);
+            color: var(--texte-button-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .profilepage_content table {
+            border-spacing: 40px;
+            /* zorgt voor afstand tussen kolommen */
+            border-collapse: separate;
+            /* belangrijk voor border-spacing */
+        }
+    </style>
 </head>
+
 <body>
-  <%- include('navbar') %>
-  <div class="profile">
+    <%- include('navbar') %>
+        <div class="profile">
             <table>
                 <tr>
                     <th>
@@ -31,7 +36,9 @@
                     <th>
                         <table>
                             <tr>
-                                <h2><%= user.username %></h2>
+                                <h2>
+                                    <%= user.username %>
+                                </h2>
                                 <button type="edit">Edit profile</button>
                             </tr>
                         </table>
@@ -59,4 +66,5 @@
             </table>
         </div>
 </body>
+
 </html>
