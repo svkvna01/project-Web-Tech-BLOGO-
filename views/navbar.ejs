@@ -9,8 +9,13 @@
         <li><a href="/map.html">Map</a></li>
         <% if (user) { %>
             <li><a href="/profile">Profile</a></li>
+            <li>
+                <form action="/logout" method="post">
+                    <button type="submit" class="logout-btn">Logout</button>
+                </form>
+            </li>
             <% } else { %>
-                <li><a href="/login">Sign In</a></li>
+                <li><a href="/login">Log In</a></li>
                 <li><a href="/register">Register</a></li>
                 <% } %>
     </ul>

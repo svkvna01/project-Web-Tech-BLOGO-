@@ -85,6 +85,12 @@ app.get('/profile', requireAuth, (req, res) => {
     res.render('profile', { user: req.session.user });
 });
 
+app.post('/logout', (req, res) => {
+  req.session.destroy(() => {
+    res.redirect('/login');
+  });
+});
+
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`App listening on http://localhost:${PORT}`));
