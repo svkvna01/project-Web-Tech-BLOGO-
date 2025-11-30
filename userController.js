@@ -2,8 +2,8 @@ const db = require('./db.js');
 
 async function findUserInfoByUsername(name){
    const sql = "SELECT * FROM users WHERE username = ? ";
-   const [info] = await db.query(sql , [name],);
-   return info;
+   const [info] = await db.query(sql, [name]);
+   return info[0];
 }
 
 async function AddUser(values , res){
@@ -36,10 +36,8 @@ function UpDateUserLastName(username , newEmail){
     
 }
 
-
-
 async function ValidateLogin(username, password) {
-    const [info] = await findUserInfoByUsername(username);
+    const info = await findUserInfoByUsername(username);
 
     if (!info) return false;   // user bestaat niet
 

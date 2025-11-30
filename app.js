@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const db = require('./userController.js');
-const { ValidateLogin , AddUser } = require('./userController.js');
+const {AddUser, ValidateLogin} = require('./userController');
 
 const path = require('path');
 
