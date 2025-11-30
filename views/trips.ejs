@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/style-navbar.css">
+    <meta charset="UTF-8">
+    <title>Trips</title>
+</head>
+
+<body>
+    <%- include('navbar') %>
+
+        <div class="trips">
+            <h2>Trips</h2>
+
+            <div class="trip-list">
+                <h3>Your planned trips</h3>
+                <ul>
+                    <% trips.forEach(trip=> { %>
+                        <li>
+                            <%= trip.country %> -
+                                <%= trip.city %> -
+                                    <%= trip.date.toLocaleDateString('nl-BE') %> : 
+                                        <%= trip.activity %>
+                        </li>
+                        <% }) %>
+                </ul>
+            </div>
+        </div>
+</body>
+
+</html>

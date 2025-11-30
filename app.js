@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const db = require('./userController.js');
 const { findUserInfoByUsername, AddUser,UpdateUser, ValidateLogin } = require('./userController');
+const { addTrip, getTripsForUser } = require('./tripController');
 
 const path = require('path');
 
@@ -105,6 +106,30 @@ app.post('/logout', (req, res) => {
         res.redirect('/login');
     });
 });
+
+app.get('/planner', requireAuth, async (req, res) => {
+    const username = req.session.user.username;
+    const trips = await getTripsForUser(username);
+    res.render('planner', { trips });
+});
+
+app.get('/trips', requireAuth, async (req, res) => {
+  const username = req.session.user.username;
+  const trips = await getTripsForUser(username);
+  res.render('trips', { trips });
+});
+
+
+app.post('/planner', requireAuth, async (req, res) => {
+    const username = req.session.user.username;
+    const { country, city, date, activity } = req.body;
+
+    const values = [username, country, city, date, activity];
+    await addTrip(values);
+
+    res.redirect('/planner');
+});
+
 
 
 const PORT = 3000;
