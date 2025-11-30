@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="nl">
+
 <head>
     <meta charset="UTF-8">
     <title>Edit Profile</title>
@@ -10,9 +11,57 @@
 <body>
     <%- include('navbar') %>
 
-    <h1>Edit Profile</h1>
+        <div class="edit-profile">
+            <h1>Edit Profile</h1>
 
-    <form method="post" action="/editProfile">
-    </form>
+            <div class="edit-firstname">
+                <span class="label">Current first name:</span>
+                <span class="current">
+                    <%= user.firstName%>
+                </span>
+                <form method="post" action="/editProfile">
+                    <input type="hidden" name="field" value="firstName">
+                    <input name="value" type="text" placeholder="First name" required>
+                    <button type="submit">Change First Name</button>
+                </form>
+            </div>
+
+            <div class="edit-lastname">
+                <span class="label">Current last name:</span>
+                <span class="current">
+                    <%= user.lastName%>
+                </span>
+                <form method="post" action="/editProfile">
+                    <input type="hidden" name="field" value="lastName">
+                    <input name="value" type="text" placeholder="Last name" required>
+                    <button type="submit">Change Last Name</button>
+                </form>
+            </div>
+
+            <div class="edit-username">
+                <span class="label">Current username:</span>
+                <span class="current">
+                    <%= user.username %>
+                </span>
+                <form method="post" action="/editProfile">
+                    <input type="hidden" name="field" value="username">
+                    <input name="value" type="text" placeholder="Username" required>
+                    <button type="submit">Change Username</button>
+                </form>
+            </div>
+
+            <div class="edit-email">
+                <span class="label">Current email:</span>
+                <span class="current">
+                    <%= user.email%>
+                </span>
+                <form method="post" action="/editProfile">
+                    <input type="hidden" name="field" value="email">
+                    <input name="value" type="email" placeholder="Email" required>
+                    <button type="submit">Change Email</button>
+                </form>
+            </div>
+        </div>
 </body>
+
 </html>

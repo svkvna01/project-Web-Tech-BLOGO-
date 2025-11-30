@@ -1,7 +1,7 @@
 const express = require('express');
 const session = require('express-session');
 const db = require('./userController.js');
-const {AddUser, ValidateLogin} = require('./userController');
+const { findUserInfoByUsername, AddUser,UpdateUser, ValidateLogin } = require('./userController');
 
 const path = require('path');
 
@@ -39,6 +39,25 @@ app.get('/editProfile', requireAuth, (req, res) => {
     res.render('editProfile', { user: req.session.user });
 });
 
+app.post('/editProfile', requireAuth, async (req, res) => {
+    const username = req.session.user.username;
+
+    const field = req.body.field;
+    const value = req.body.value;
+
+    await UpdateUser(username, field, value);
+
+    let newUser;
+
+    if (field === "username") {
+        newUser = await findUserInfoByUsername(value);
+    } else {
+        newUser = await findUserInfoByUsername(username);
+    }
+    req.session.user = newUser;
+    res.redirect('/editProfile');
+});
+
 
 app.post('/login', async (req, res) => {
     const { username, password } = req.body;
@@ -50,7 +69,7 @@ app.post('/login', async (req, res) => {
     }
 
     // login OK
-    req.session.user = { username };
+    req.session.user = await findUserInfoByUsername(username);
     res.redirect("/profile");
 });
 
@@ -63,16 +82,12 @@ app.get('/register', (req, res) => {
 app.post('/register', (req, res) => {
     const values = [
         req.body.firstName,
-        req.body.lastName, 
-        req.body.email, 
-        req.body.username, 
-        req.body.password ]
+        req.body.lastName,
+        req.body.email,
+        req.body.username,
+        req.body.password]
 
     const result = AddUser(values);
-     if (!result) {
-         return res.send("Something went wrong!");
-        }
-
     return res.redirect('/login');
 });
 
@@ -86,9 +101,9 @@ app.get('/profile', requireAuth, (req, res) => {
 });
 
 app.post('/logout', (req, res) => {
-  req.session.destroy(() => {
-    res.redirect('/login');
-  });
+    req.session.destroy(() => {
+        res.redirect('/login');
+    });
 });
 
 

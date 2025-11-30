@@ -18,22 +18,11 @@ async function DeleteUser(values , res){
     return user.affectedRows === 1;
 }
 
-function UpDateUserEmail(username , newEmail){
-    const sql = "UPDATE users SET email = ? WHERE userame = ?";
-    db.query(sql , [newEmail , username]);
-    
-}
+async function UpdateUser(username, fieldName, newValue) {
+  const allowedFields = ["firstName", "lastName", "email", "username"];
 
-function UpDateUserFirstName(username , newEmail){
-    const sql = "UPDATE users SET firstname = ? WHERE userame = ?";
-    db.query(sql , [newEmail , username]);
-    
-}
-
-function UpDateUserLastName(username , newEmail){
-    const sql = "UPDATE users SET lastname = ? WHERE userame = ?";
-    db.query(sql , [newEmail , username]);
-    
+  const sql = `UPDATE users SET ${fieldName} = ? WHERE username = ?`;
+  await db.query(sql, [newValue, username]);
 }
 
 async function ValidateLogin(username, password) {
@@ -49,8 +38,6 @@ async function ValidateLogin(username, password) {
 module.exports = {
     findUserInfoByUsername,
     AddUser,
-    UpDateUserEmail,
-    ValidateLogin,
-    UpDateUserFirstName,
-    UpDateUserLastName
+    UpdateUser,
+    ValidateLogin
 };
