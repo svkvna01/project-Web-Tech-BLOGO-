@@ -21,8 +21,12 @@
                         <li>
                             <%= trip.country %> -
                                 <%= trip.city %> -
-                                    <%= trip.date.toLocaleDateString('nl-BE') %> : 
+                                    <%= trip.date.toLocaleDateString('nl-BE') %> :
                                         <%= trip.activity %>
+                                            <form method="post" action="/trips/delete" style="display:inline;">
+                                                <input type="hidden" name="id" value="<%= trip.id %>">
+                                                <button type="submit">Delete</button>
+                                            </form>
                         </li>
                         <% }) %>
                 </ul>

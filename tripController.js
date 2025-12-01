@@ -12,7 +12,14 @@ async function getTripsForUser(username) {
     return rows;
 }
 
+async function deleteTrip(id, username) {
+  const sql = "DELETE FROM trips WHERE id = ? AND username = ?";
+  const [result] = await db.query(sql, [id, username]);
+  return result.affectedRows === 1;
+}
+
 module.exports = {
     addTrip,
-    getTripsForUser
+    getTripsForUser,
+    deleteTrip
 };
