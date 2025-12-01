@@ -19,7 +19,9 @@ async function geocodeLocation(country, city) {
     const res = await fetch(url, { headers: { 'User-Agent': 'GloboApp/1.0' } });
     const data = await res.json();
 
-    if (data.length === 0) return null;
+    if (data.length === 0) {
+        return null;
+    }
 
     return {
         lat: parseFloat(data[0].lat),
@@ -30,19 +32,25 @@ async function geocodeLocation(country, city) {
 async function renderTripsOnMap() {
     const trips = await loadTrips();
 
-    for (const trip of trips) {
+    for (let i = 0; i < trips.length; i++) {
+
+        const trip = trips[i];
+
         const coords = await geocodeLocation(trip.country, trip.city);
 
-        const marker = L.marker([coords.lat, coords.lon]).addTo(map);
+        if (coords) {
+            const marker = L.marker([coords.lat, coords.lon]).addTo(map);
 
-        const dateString = new Date(trip.date).toLocaleDateString("nl-BE");
+            const dateString = new Date(trip.date).toLocaleDateString("nl-BE");
 
-        marker.bindPopup(`
-            <strong>${trip.country}</strong><br>
-            ${trip.city}<br>
-            ${dateString}<br>
-            ${trip.activity}
-        `);
+            marker.bindPopup(`
+                <strong>${trip.country}</strong><br>
+                ${trip.city}<br>
+                ${dateString}<br>
+                ${trip.activity}
+            `);
+        }
+
     }
 }
 
