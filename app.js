@@ -136,6 +136,15 @@ app.post('/trips/delete', requireAuth, async (req, res) => {
   res.redirect('/trips');
 });
 
+app.get('/api/trips', requireAuth, async (req, res) => {
+  const username = req.session.user.username;
+  const trips = await getTripsForUser(username);
+  res.json(trips);
+});
+
+app.get('/map', requireAuth, (req, res) => {
+  res.render('map');
+});
 
 const PORT = 3000;
 app.listen(PORT, () => console.log(`App listening on http://localhost:${PORT}`));
