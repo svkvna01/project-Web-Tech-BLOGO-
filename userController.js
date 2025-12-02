@@ -2,8 +2,8 @@ const db = require('./db.js');
 
 async function findUserInfoByUsername(name){
    const sql = "SELECT * FROM users WHERE username = ? ";
-   const [info] = await db.query(sql , [name],);
-   return info;
+   const [info] = await db.query(sql, [name]);
+   return info[0];
 }
 
 async function AddUser(values , res){
@@ -18,28 +18,15 @@ async function DeleteUser(values , res){
     return user.affectedRows === 1;
 }
 
-function UpDateUserEmail(username , newEmail){
-    const sql = "UPDATE users SET email = ? WHERE userame = ?";
-    db.query(sql , [newEmail , username]);
-    
+async function UpdateUser(username, fieldName, newValue) {
+  const allowedFields = ["firstName", "lastName", "email", "username"];
+
+  const sql = `UPDATE users SET ${fieldName} = ? WHERE username = ?`;
+  await db.query(sql, [newValue, username]);
 }
-
-function UpDateUserFirstName(username , newEmail){
-    const sql = "UPDATE users SET firstname = ? WHERE userame = ?";
-    db.query(sql , [newEmail , username]);
-    
-}
-
-function UpDateUserLastName(username , newEmail){
-    const sql = "UPDATE users SET lastname = ? WHERE userame = ?";
-    db.query(sql , [newEmail , username]);
-    
-}
-
-
 
 async function ValidateLogin(username, password) {
-    const [info] = await findUserInfoByUsername(username);
+    const info = await findUserInfoByUsername(username);
 
     if (!info) return false;   // user bestaat niet
 
@@ -51,8 +38,6 @@ async function ValidateLogin(username, password) {
 module.exports = {
     findUserInfoByUsername,
     AddUser,
-    UpDateUserEmail,
-    ValidateLogin,
-    UpDateUserFirstName,
-    UpDateUserLastName
+    UpdateUser,
+    ValidateLogin
 };
