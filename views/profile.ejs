@@ -6,63 +6,45 @@
     <title>Profile</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/style-navbar.css">
-    <style>
-        button {
-            background-color: var(--button-color);
-            color: var(--texte-button-color);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
+    <link rel="stylesheet" href="/style-profile.css">
 
-        .profilepage_content table {
-            border-spacing: 40px;
-            /* zorgt voor afstand tussen kolommen */
-            border-collapse: separate;
-            /* belangrijk voor border-spacing */
-        }
-    </style>
 </head>
 
 <body>
     <%- include('navbar') %>
         <div class="profile">
-            <table>
-                <tr>
-                    <th>
-                        <img src="img/pfp.jpg" width="140" height="140" alt="Logo">
-                    </th>
-                    <th>
-                        <table>
-                            <tr>
-                                <h2>
-                                    <%= user.username %>
-                                </h2>
-                                <a href="/editProfile">
-                                    <button>Edit profile</button>
-                                </a>
-                            </tr>
-                        </table>
-                    </th>
-                </tr>
-            </table>
+            <div class="profile-header">
+                <img src="img/pfp.jpg" class="pfp">
+            <div class="profile-info">
+                <div class="stats">
+                    <div class="stat"><span>Followers:</span> <strong>0</strong></div>
+                    <div class="stat"><span>Followed:</span> <strong>0</strong></div>
+                </div>
+            <h2 class="username"><%= user.username %></h2>
+            <a href="/editProfile">
+                <button class="edit-btn">Edit profile</button>
+            </a>
+            </div>      
         </div>
+                    
         <div class="profilepage_content">
             <table>
                 <th>
-                    <div class="friends">
-                        <h2>Friends</h2>
+                    <div class="Posts">
+                        <h2>My Posts</h2>
+                        <button class="icone"> <img src="img/icone-camera.png"></button>
                     </div>
                 </th>
                 <th>
                     <div class="trips">
                         <h2>Trips</h2>
+                        <button class="icone"> <img src="img/icone-trip.png" ></button>
                     </div>
                 </th>
                 <th>
                     <div class="bookmarks">
                         <h2>Bookmarks</h2>
+                        <button class="icone"> <img src="img/icone-bookmark.png"></button>
                     </div>
                 </th>
             </table>

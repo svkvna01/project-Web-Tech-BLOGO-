@@ -26,6 +26,20 @@ body {
 }
 
 
+button {
+    background-color: var(--button-color);
+    color: var(--texte-button-color);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 5px 15px;
+}
+
+
+button:hover {
+    background-color: var(--button-hover-color);
+}
+
 
 
 
