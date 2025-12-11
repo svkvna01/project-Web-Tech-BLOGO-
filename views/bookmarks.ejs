@@ -37,6 +37,15 @@
                     <p class="post-caption"><%= post.caption %></p>
                 <% } %>
 
+                <small><%= new Date(post.created_at).toLocaleString('nl-BE') %></small>
+
+                <% if (isOwnProfile) { %>
+                    <form action="/posts/delete" method="POST" style="display:inline; margin-top: 10px;">
+                        <input type="hidden" name="id" value="<%= post.id %>">
+                        <button type="submit" class="delete-btn">Delete</button>
+                    </form>
+                <% } %>
+
                 <div class="post-actions">
                     <form action="/posts/save" method="POST" style="display: inline;">
                         <input type="hidden" name="postId" value="<%= post.id %>">
