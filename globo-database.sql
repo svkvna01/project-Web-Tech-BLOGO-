@@ -28,7 +28,7 @@ CREATE TABLE trips (
     country VARCHAR(100) NOT NULL,
     city VARCHAR(100) NOT NULL,
     date DATE NOT NULL,
-    activity VARCHAR(255) NOT NULL
+    activity VARCHAR(255) NOT NULL,
     budget DECIMAL(10,2) DEFAULT 0
 );
 
