@@ -122,8 +122,8 @@ function addLocation(locData) {
         <div class="location-number">${index + 1}</div>
         <div class="location-content">
             <div class="location-inputs">
-                <input type="text" name="locations[${index}][country]" placeholder="Country" value="${locData?.country || ''}">
-                <input type="text" name="locations[${index}][city]" placeholder="City" value="${locData?.city || ''}">
+                <input type="text" name="locations[${index}][country]" placeholder="Country" value="${locData?.country || ''}" list="country-options" autocomplete="off">
+                <input type="text" name="locations[${index}][city]" placeholder="City" value="${locData?.city || ''}" list="city-options" autocomplete="off">
                 <input type="date" name="locations[${index}][date]" value="${formattedDate}">
                 <input type="text" name="locations[${index}][activity]" placeholder="Activity" value="${locData?.activity || ''}">
             </div>
