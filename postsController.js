@@ -1,34 +1,18 @@
-<<<<<<< HEAD
 const db = require('./db.js'); //Import the MYSQL pool
 
 // Add post to database
 async function addPost(username, caption, imagePaths) {
     const sqlPost = "INSERT INTO posts (username, caption) VALUES (?, ?)"; 
     await db.query(sqlPost, [username, caption]);
-=======
-const db = require('./db.js');
-
-async function addPost(username, caption, imagePaths) {
-    const sqlPost = "INSERT INTO posts (username, caption) VALUES (?, ?)";
-    const [result] = await db.query(sqlPost, [username, caption]);
-    const postId = result.insertId;
->>>>>>> origin/main
 
     if (imagePaths && imagePaths.length > 0) {
         const sqlImages = "INSERT INTO post_images (post_id, image_path) VALUES ?";
         const imageValues = imagePaths.map(path => [postId, path]);
         await db.query(sqlImages, [imageValues]);
     }
-<<<<<<< HEAD
 }
 
 // Get posts of a certain user
-=======
-
-    return postId;
-}
-
->>>>>>> origin/main
 async function getPostsForUser(username) {
     const sql = `
         SELECT p.*, GROUP_CONCAT(pi.image_path) as images 
@@ -46,10 +30,7 @@ async function getPostsForUser(username) {
     }));
 }
 
-<<<<<<< HEAD
 // Get all the posts from the database (from each user)
-=======
->>>>>>> origin/main
 async function getAllPosts(viewerUsername) {
     const sql = `
         SELECT p.*, GROUP_CONCAT(pi.image_path) as images 
@@ -68,7 +49,6 @@ async function getAllPosts(viewerUsername) {
     }));
 }
 
-<<<<<<< HEAD
 // Delete a post
 async function deletePost(id, username) {
     await db.query("DELETE FROM saved_posts WHERE post_id = ?", [id]);
@@ -77,23 +57,11 @@ async function deletePost(id, username) {
 }
 
 // Update the username of OP 
-=======
-async function deletePost(id, username) {
-    await db.query("DELETE FROM saved_posts WHERE post_id = ?", [id]);
-    const sql = "DELETE FROM posts WHERE id = ? AND username = ?";
-    const [result] = await db.query(sql, [id, username]);
-    return result.affectedRows === 1;
-}
-
->>>>>>> origin/main
 async function renamePostsUser(oldUsername, newUsername) {
     await db.query("UPDATE posts SET username = ? WHERE username = ?", [newUsername, oldUsername]);
 }
 
-<<<<<<< HEAD
 // Export functions
-=======
->>>>>>> origin/main
 module.exports = {
     addPost,
     getPostsForUser,
