@@ -9,12 +9,12 @@
 <body>
     <%- include('navbar') %>
     
-    <h1>Alle Posts</h1>
+    <h1>All Posts</h1>
     
-    <a href="/posts/new">Nieuwe Post Maken</a>
+    <a href="/posts/new">Create New Post</a>
     
     <% if (posts.length === 0) { %>
-        <p>Nog geen posts.</p>
+        <p>No posts yet.</p>
     <% } else { %>
         <div class="posts-container">
             <% posts.forEach(post => { %>
