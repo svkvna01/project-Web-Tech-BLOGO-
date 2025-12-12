@@ -1,9 +1,5 @@
-<<<<<<< HEAD
 const db = require('./db.js'); // Import MYSQL pool
 
-=======
-const db = require('./db.js');
->>>>>>> origin/main
 
 async function findUserInfoByUsername(name){
    const sql = "SELECT * FROM users WHERE username = ? ";
@@ -11,7 +7,6 @@ async function findUserInfoByUsername(name){
    return info[0];
 }
 
-<<<<<<< HEAD
 // Add the current user, during registration
 async function AddUser(values , res){
     const sql = "INSERT INTO users (firstName, lastName, email, username, password) VALUES (?, ?, ?, ?, ?)";
@@ -30,43 +25,16 @@ async function UpdateUser(username, fieldOrFields, value) {
     const allowed = ["firstName", "lastName", "email", "username", "profilePic", "privacy"];
 
     if (typeof fieldOrFields === 'string') { // One field
-=======
-async function AddUser(values , res){
-    const sql = "INSERT INTO users (firstName, lastName, email, username, password) VALUES (?, ?, ?, ?, ?)";
-    const [user] = await db.query(sql , values);
-    return user.affectedRows === 1;
-}
-
-async function DeleteUser(values , res){
-    const sql = "DELETE INTO users (firstName, lastName, email, username, password ) VALUES(?)";
-    const [user] = await db.query(sql , [values]);
-    return user.affectedRows === 1;
-}
-
-async function UpdateUser(username, fieldOrFields, value) {
-    const allowed = ["firstName", "lastName", "email", "username", "profilePic", "privacy"];
-
-    // een enkel veld 
-    if (typeof fieldOrFields === 'string') {
->>>>>>> origin/main
         if (!allowed.includes(fieldOrFields)) return;
         const sql = `UPDATE users SET ${fieldOrFields} = ? WHERE username = ?`;
         await db.query(sql, [value, username]);
         return;
     }
 
-<<<<<<< HEAD
     const updates = [];
     const values = [];
 
     for (const key in fieldOrFields) {       // multiple fields
-=======
-    // meerdere
-    const updates = [];
-    const values = [];
-
-    for (const key in fieldOrFields) {
->>>>>>> origin/main
         if (allowed.includes(key) && fieldOrFields[key]) {
             updates.push(`${key} = ?`);
             values.push(fieldOrFields[key]);
@@ -85,28 +53,17 @@ async function UpdateUser(username, fieldOrFields, value) {
 async function ValidateLogin(username, password) {
     const info = await findUserInfoByUsername(username);
 
-<<<<<<< HEAD
     if (!info) return false;   // user doens't exist
-=======
-    if (!info) return false;   // user bestaat niet
->>>>>>> origin/main
 
     const dbPassword = info.password;
     return password === dbPassword;
 }
 
-<<<<<<< HEAD
 // Export functions
 module.exports = {
     findUserInfoByUsername,
     AddUser,
     DeleteUser,
-=======
-
-module.exports = {
-    findUserInfoByUsername,
-    AddUser,
->>>>>>> origin/main
     UpdateUser,
     ValidateLogin
 };
