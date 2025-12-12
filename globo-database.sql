@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 DROP DATABASE globo; 
-=======
-DROP DATABASE globo;
->>>>>>> origin/main
 CREATE DATABASE globo;
 USE globo;
 
 CREATE TABLE users (
-<<<<<<< HEAD
     id INT AUTO_INCREMENT PRIMARY KEY, 
-=======
-    id INT AUTO_INCREMENT PRIMARY KEY,
->>>>>>> origin/main
     firstName VARCHAR(50),
     lastName VARCHAR(50),
     email VARCHAR(100) UNIQUE,
@@ -30,19 +22,6 @@ CREATE TABLE follows (
     FOREIGN KEY (followee) REFERENCES users(username) ON DELETE CASCADE
 );
 
-<<<<<<< HEAD
-=======
-CREATE TABLE trips (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) NOT NULL,
-    country VARCHAR(100) NOT NULL,
-    city VARCHAR(100) NOT NULL,
-    date DATE NOT NULL,
-    activity VARCHAR(255) NOT NULL,
-    budget DECIMAL(10,2) DEFAULT 0
-);
-
->>>>>>> origin/main
 CREATE TABLE posts (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
@@ -66,7 +45,6 @@ CREATE TABLE IF NOT EXISTS saved_posts (
     UNIQUE KEY unique_save (username, post_id)
 );
 
-<<<<<<< HEAD
 CREATE TABLE trips (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
@@ -75,9 +53,6 @@ CREATE TABLE trips (
     budget DECIMAL(10,2) DEFAULT 0
 );
 
-=======
--- Multi-location trips
->>>>>>> origin/main
 CREATE TABLE trip_locations (
     id INT AUTO_INCREMENT PRIMARY KEY,
     trip_id INT NOT NULL,
@@ -90,10 +65,6 @@ CREATE TABLE trip_locations (
     FOREIGN KEY (trip_id) REFERENCES trips(id) ON DELETE CASCADE
 );
 
-<<<<<<< HEAD
-=======
--- Collaborative trips
->>>>>>> origin/main
 CREATE TABLE trip_participants (
     id INT AUTO_INCREMENT PRIMARY KEY,
     trip_id INT NOT NULL,
@@ -105,10 +76,6 @@ CREATE TABLE trip_participants (
     UNIQUE KEY unique_participant (trip_id, username)
 );
 
-<<<<<<< HEAD
-=======
--- Trip chat
->>>>>>> origin/main
 CREATE TABLE trip_messages (
     id INT AUTO_INCREMENT PRIMARY KEY,
     trip_id INT NOT NULL,
@@ -119,13 +86,3 @@ CREATE TABLE trip_messages (
     FOREIGN KEY (username) REFERENCES users(username) ON DELETE CASCADE
 );
 
-<<<<<<< HEAD
-=======
--- Update trips table (maak het een 'container' voor locations)
-ALTER TABLE trips DROP COLUMN country;
-ALTER TABLE trips DROP COLUMN city;
-ALTER TABLE trips DROP COLUMN date;
-ALTER TABLE trips DROP COLUMN activity;
-ALTER TABLE trips ADD COLUMN title VARCHAR(255) NOT NULL;
-ALTER TABLE trips ADD COLUMN description TEXT;
->>>>>>> origin/main
