@@ -77,8 +77,8 @@ async function renderTripsOnMap() {
         const tripIcon = createTripIcon(color);
 
         for (const loc of trip.locations) {
-            const status = new Date(loc.date) < today ? 'visited' : 'wishlist';
-
+            const status = loc.visited ? 'visited' : 'wishlist';
+            
             if ((status === 'visited' && !filterVisited) || (status === 'wishlist' && !filterWish)) {
                 continue;
             }
