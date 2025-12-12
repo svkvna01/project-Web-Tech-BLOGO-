@@ -9,21 +9,14 @@
 <body>
     <%- include('navbar') %>
     
-<<<<<<< HEAD
-    <h1>Alle Posts</h1>
-    
-    <a href="/posts/new">Nieuwe Post Maken</a>
-    
-    <% if (posts.length === 0) { %>
-        <p>Nog geen posts.</p>
-=======
+
     <h1>All Posts</h1>
     
     <a href="/posts/new">Create New Post</a>
     
     <% if (posts.length === 0) { %>
         <p>No posts yet.</p>
->>>>>>> origin/main
+
     <% } else { %>
         <div class="posts-container">
             <% posts.forEach(post => { %>
