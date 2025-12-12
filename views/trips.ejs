@@ -22,12 +22,7 @@
                     <ul>
                         <% trips.forEach(trip => { %>
                             <li>
-<<<<<<< HEAD
-                                <strong><%= trip.title %></strong> - <%= trip.description %><br>
-=======
-                                <strong><a href="/trip/<%= trip.id %>"><%= trip.title %></a></strong> - <%= trip.description %><br>
->>>>>>> origin/main
-                                
+             <strong><a href="/trip/<%= trip.id %>"><%= trip.title %></a></strong> - <%= trip.description %><br>                                
                                 <% if (isOwnProfile) { %>
                                     <form action="/trips/delete" method="POST" style="display:inline;">
                                         <input type="hidden" name="id" value="<%= trip.id %>">
