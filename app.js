@@ -172,10 +172,6 @@ app.post('/register', (req, res) => {
     return res.redirect('/login');
 });
 
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
 function requireAuth(req, res, next) {
     if (!req.session.user) return res.redirect('/login');
     next();
@@ -194,7 +190,6 @@ app.post('/logout', (req, res) => {
     });
 });
 
-<<<<<<< HEAD
 app.post('/deleteAccount', async (req, res) => {
     try {
         const username = req.session.user?.username;
@@ -213,10 +208,6 @@ app.post('/deleteAccount', async (req, res) => {
     }
 });
 
-
-
-=======
->>>>>>> origin/main
 app.get('/planner', requireAuth, async (req, res) => {
     const username = req.session.user.username;
     const trips = await getTripsForUser(username);
@@ -474,8 +465,6 @@ app.get('/user/:username/followers', requireAuth, async (req, res) => {
     res.render('followers', { username, followers, isOwnProfile });
 });
 
-<<<<<<< HEAD
-=======
 // Single trip detail page
 app.get('/trip/:id', requireAuth, async (req, res) => {
     const tripId = req.params.id;
@@ -486,7 +475,6 @@ app.get('/trip/:id', requireAuth, async (req, res) => {
     res.render('trip', { trip, isOwner });
 });
 
->>>>>>> origin/main
 app.get('/user/:username/following', requireAuth, async (req, res) => {
     const username = req.params.username;
     const followingList = await listFollowing(username);
