@@ -29,6 +29,12 @@
             <div class="posts-grid">
                 <% posts.forEach(post => { %>
                     <div class="post">
+                        <div class="post-header">
+                            <h3>
+                                <a href="/user/<%= post.username %>"><%= post.username %></a>
+                            </h3>
+                        </div>
+
                         <p class="post-caption"><%= post.caption %></p>
                         
                         <!-- Toon alle foto's -->
