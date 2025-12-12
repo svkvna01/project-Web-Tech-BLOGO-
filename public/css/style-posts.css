@@ -1,10 +1,9 @@
 .header-section {
     position: sticky;
-    top: 40px; /* Pas aan op basis van je navbar hoogte */
-    background: white;
-    z-index: 10;
-    padding: 20px 0;
-    margin-bottom: 20px;
+    top: 70px; /* Pas aan op basis van je navbar hoogte */
+
+    padding: 5px 0;
+    margin-bottom: 50px;
 }
 
   /* Posts section normaal positioneren (geen top gebruiken) */
