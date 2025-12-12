@@ -443,6 +443,16 @@ app.get('/user/:username/followers', requireAuth, async (req, res) => {
     res.render('followers', { username, followers, isOwnProfile });
 });
 
+// Single trip detail page
+app.get('/trip/:id', requireAuth, async (req, res) => {
+    const tripId = req.params.id;
+    const currentUser = req.session.user.username;
+    const trip = await getTripDetails(tripId);
+
+    const isOwner = trip.username === currentUser;
+    res.render('trip', { trip, isOwner });
+});
+
 app.get('/user/:username/following', requireAuth, async (req, res) => {
     const username = req.params.username;
     const followingList = await listFollowing(username);
