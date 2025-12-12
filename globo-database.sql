@@ -62,6 +62,7 @@ CREATE TABLE trip_locations (
     country VARCHAR(100) NOT NULL,
     city VARCHAR(100) NOT NULL,
     date DATE NOT NULL,
+    visited BOOLEAN DEFAULT FALSE,
     activity VARCHAR(255) NOT NULL,
     order_index INT DEFAULT 0,
     FOREIGN KEY (trip_id) REFERENCES trips(id) ON DELETE CASCADE
