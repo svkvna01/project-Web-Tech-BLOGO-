@@ -81,9 +81,11 @@ async function editTrip(tripId, username, title, description, budget, locations,
             const loc = locations[i];
             const dateValue = loc.date && loc.date.trim() !== '' ? loc.date : null;
 
+            const visited = loc.visited || false;
+
             await conn.query(
-                'INSERT INTO trip_locations (trip_id, country, city, date, activity, order_index) VALUES (?, ?, ?, ?, ?, ?)',
-                [tripId, loc.country, loc.city, dateValue, loc.activity, i]
+                'INSERT INTO trip_locations (trip_id, country, city, date, activity, order_index, visited) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                [tripId, loc.country, loc.city, dateValue, loc.activity, i, visited]
             );
         }
 
@@ -181,10 +183,12 @@ async function createCollaborativeTrip(username, title, description, budget, loc
             const dateValue = locations[i].date && locations[i].date.trim() !== '' 
                 ? locations[i].date 
                 : null;
+
+            const visited = locations[i].visited || false;
             
             await conn.query(
-                'INSERT INTO trip_locations (trip_id, country, city, date, activity, order_index) VALUES (?, ?, ?, ?, ?, ?)',
-                [tripId, locations[i].country, locations[i].city, dateValue, locations[i].activity, i]
+                'INSERT INTO trip_locations (trip_id, country, city, date, activity, order_index, visited) VALUES (?, ?, ?, ?, ?, ?, ?)',
+                [tripId, locations[i].country, locations[i].city, dateValue, locations[i].activity, i, visited]
             );
         }
         console.log('✅ All locations added');
