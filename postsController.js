@@ -50,6 +50,7 @@ async function getAllPosts(viewerUsername) {
 }
 
 async function deletePost(id, username) {
+    await db.query("DELETE FROM saved_posts WHERE post_id = ?", [id]);
     const sql = "DELETE FROM posts WHERE id = ? AND username = ?";
     const [result] = await db.query(sql, [id, username]);
     return result.affectedRows === 1;
