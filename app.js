@@ -3,11 +3,7 @@ const session = require('express-session');
 const db = require('./db.js');
 const multer = require('multer'); // upload image
 const fs = require('fs');
-<<<<<<< HEAD
 const { findUserInfoByUsername, AddUser, DeleteUser, UpdateUser, ValidateLogin } = require('./userController');
-=======
-const { findUserInfoByUsername, AddUser,UpdateUser, ValidateLogin } = require('./userController');
->>>>>>> origin/main
 const { addTrip, addTripLocation, editTrip, getTripsForUser, deleteTrip, renameTripsUser, createCollaborativeTrip, getTripDetails, addTripMessage, getTripMessages } = require('./tripController');
 const { addPost, getPostsForUser, getAllPosts, deletePost, renamePostsUser } = require('./postsController');
 const { followUser, unfollowUser, getFollowerCount, getFollowingCount, isFollowing, isFollowed, renameFollowsUser, listFollowers, listFollowing, getMutualFriends } = require('./followController');
