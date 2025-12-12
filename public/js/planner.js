@@ -18,6 +18,17 @@ async function init() {
 
 
     if (editTrip) {
+        console.log('=== EDIT TRIP DEBUG ===');
+        console.log('Edit trip locations:', editTrip.locations);
+        editTrip.locations.forEach((loc, i) => {
+            console.log(`Location ${i}:`, {
+                country: loc.country,
+                visited: loc.visited,
+                visited_type: typeof loc.visited,
+                visited_value: loc.visited === 1 ? 'is 1' : loc.visited === true ? 'is true' : 'is something else'
+            });
+        });
+        console.log('======================');
         loadMessages();
         document.getElementById('tripTitle').value = editTrip.title;
         document.getElementById('tripDescription').value = editTrip.description || '';
@@ -118,6 +129,8 @@ function addLocation(locData) {
         formattedDate = locData.date.split('T')[0];
     }
 
+    const isVisited = locData?.visited === 1 || locData?.visited === true;
+    
     div.innerHTML = `
         <div class="location-number">${index + 1}</div>
         <div class="location-content">
@@ -126,6 +139,14 @@ function addLocation(locData) {
                 <input type="text" name="locations[${index}][city]" placeholder="City" value="${locData?.city || ''}" list="city-options" autocomplete="off">
                 <input type="date" name="locations[${index}][date]" value="${formattedDate}">
                 <input type="text" name="locations[${index}][activity]" placeholder="Activity" value="${locData?.activity || ''}">
+
+                <button type="button" 
+                        class="visited-toggle ${isVisited ? 'visited' : 'not-visited'}" 
+                        onclick="toggleVisited(this)"
+                        data-visited="${isVisited ? 'true' : 'false'}">
+                    ${isVisited ? '✓ Visited' : '○ Yet to Visit'}
+                </button>
+                
             </div>
             <button type="button" class="remove-location" onclick="removeExistingLocation(this)">Remove</button>
         </div>
@@ -169,13 +190,16 @@ async function saveTrip() {
         const cityInput = card.querySelector('input[name*="[city]"]');
         const dateInput = card.querySelector('input[name*="[date]"]');
         const activityInput = card.querySelector('input[name*="[activity]"]');
+        const visitedButton = card.querySelector('.visited-toggle');
+        const visited = visitedButton ? visitedButton.dataset.visited === 'true' : false;
         
         if (countryInput && cityInput) {
             const location = {
                 country: countryInput.value.trim(),
                 city: cityInput.value.trim(),
                 date: dateInput ? dateInput.value : '',
-                activity: activityInput ? activityInput.value.trim() : ''
+                activity: activityInput ? activityInput.value.trim() : '',
+                visited: visited
             };
             
             if (location.country && location.city) {
@@ -294,6 +318,25 @@ function handleEnter(event) {
     if (event.key === 'Enter') {
         sendMessage();
     }
+}
+
+function toggleVisited(button) {
+    console.log('=== TOGGLE VISITED ===');
+    console.log('Current dataset.visited:', button.dataset.visited);
+    console.log('Type:', typeof button.dataset.visited);
+    
+    const currentVisited = button.dataset.visited === 'true';
+    const newVisited = !currentVisited;
+    
+    console.log('Current visited (boolean):', currentVisited);
+    console.log('New visited (boolean):', newVisited);
+    
+    button.dataset.visited = newVisited ? 'true' : 'false';
+    button.textContent = newVisited ? '✓ Visited' : '○ Yet to Visit';
+    button.className = `visited-toggle ${newVisited ? 'visited' : 'not-visited'}`;
+    
+    console.log('Updated dataset.visited:', button.dataset.visited);
+    console.log('====================');
 }
 
 window.addEventListener('DOMContentLoaded', init);
