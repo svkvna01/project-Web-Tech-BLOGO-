@@ -1,0 +1,231 @@
+.search-container {
+    max-width: 1000px;
+    margin: 30px auto 60px;
+    padding: 40px 20px 0;
+}
+
+.search-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.search-title {
+    margin: 0;
+    font-size: 28px;
+    color: #2b3a42;
+}
+
+.search-query {
+    color: var(--button-color);
+    font-style: italic;
+}
+
+.results-toggle {
+    display: flex;
+}
+
+.toggle-btn {
+    padding: 9px 14px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    background: #e8e8e8;
+    color: #666;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+    background: #d5d5d5;
+    border-color: #aaa;
+}
+
+.toggle-btn.active {
+    background: var(--button-color, #1d1025);
+    color: #fff;
+    border-color: var(--button-color, #281434);
+    box-shadow: 0 6px 16px rgba(33, 20, 36, 0.2);
+}
+
+.toggle-btn.active:hover {
+    background: var(--button-hover-color, #27162e);
+}
+
+.results-panel {
+    display: none;
+    margin-top: 16px;
+}
+
+.results-panel.active {
+    display: block;
+}
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    padding: 40px;
+    font-size: 16px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+}
+
+/* Trip Cards */
+.trip-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.trip-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.trip-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.trip-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #19141f;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.trip-title:hover {
+    color: var(--button-color);
+}
+
+.trip-author {
+    color: #666;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px 12px;
+    background: #f5f5f5;
+    border-radius: 15px;
+    transition: all 0.2s;
+}
+
+.trip-author:hover {
+    background: var(--button-color);
+    color: white;
+}
+
+.trip-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.trip-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.trip-detail-item::before {
+    content: "•";
+    color: var(--button-color);
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.trip-activity {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+/* User Cards */
+.user-card {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.user-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.user-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--button-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 16px;
+    font-weight: bold;
+    color: white;
+    font-size: 20px;
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-username {
+    font-size: 16px;
+    font-weight: bold;
+    color: #19141f;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 4px;
+    transition: color 0.2s;
+}
+
+.user-username:hover {
+    color: var(--button-color);
+}
+
+.user-fullname {
+    color: #666;
+    font-size: 14px;
+}
+
+.view-profile-btn {
+    padding: 8px 16px;
+    background: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.view-profile-btn:hover {
+    background: var(--button-hover-color);
+}
+
+.result-count {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+}

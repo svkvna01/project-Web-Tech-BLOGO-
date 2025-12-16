@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>HomePage</title>
+    <link rel="stylesheet" href="/css/style-homepage.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-navbar.css">
+    <link rel="stylesheet" href="/css/style-posts.css">
+    <link rel="stylesheet" href="/css/style-comments.css">
+    <link rel="stylesheet" href="/css/style-trip.css">
+</head>
+<body>
+
+<%- include('navbar') %>
+
+<div class="HomePage">
+    <% if (user) { %>
+        <!-- Logged in -->
+        
+        <div class="header-section">
+            <h1>Welcome to Globo, <%= user.username %>!</h1>
+            <div class="header-buttons">
+                <a href="/posts/new" class="button">Make a new post</a>
+                <a href="/planner" class="button">Plan a trip</a>
+                <button class="toggle-btn active" onclick="showContent('posts')">Posts</button>
+            <button class="toggle-btn" onclick="showContent('trips')">Trips</button>
+            </div>
+        </div>
+
+        
+
+        <!-- Posts Panel -->
+        <div id="posts-content" class="content-panel active">
+            <div class="posts-section">
+                <% if (posts.length === 0) { %>
+                    <div class="empty-state">
+                        <p>No posts yet. Be the first to share something!</p>
+                    </div>
+                <% } else { %>
+                    <div class="posts">
+                        <% posts.forEach(post => { %>
+                            <div class="post">
+                                <div class="post-header">
+                                    <img src="<%= post.profilPic || '/img/pfp.jpg' %>" class="pfp">
+                                    <a href="/user/<%= post.username %>" class="postUserName">
+                                        <%= post.username %>
+                                    </a>
+                                </div>
+
+                                <% if (post.images && post.images.length > 0) { %>
+                                    <div class="post-images">
+                                        <% post.images.forEach(imagePath => { %>
+                                            <img src="<%= imagePath %>" alt="Post foto" style="max-width: 400px; margin: 5px;">
+                                        <% }) %>
+                                    </div>
+                                <% } %>
+
+                                <% if (user.username === post.username) { %>
+                                    <form action="/posts/delete" method="POST" style="display:inline;">
+                                        <input type="hidden" name="id" value="<%= post.id %>">
+                                        <button type="submit">Delete post</button>
+                                    </form>
+                                <% } %>
+
+                                <p>
+                                    <span class="usernameCaptionAuthor">
+                                        <b><%= post.username %></b>
+                                    </span>
+                                    <span><b> : </b></span>
+                                    <span class="caption"><%= post.caption %></span>
+                                </p>
+
+                                <div class="post-actions">
+                                    <button
+                                        class="bookmark-btn <%= post.isSaved ? 'saved' : '' %>"
+                                        data-post-id="<%= post.id %>"
+                                        data-saved="<%= post.isSaved ? 1 : 0 %>"
+                                        onclick="toggleBookmark(this)">
+                                    </button>
+                                </div>
+
+                                <div>
+                                    <%- include('comments', { post: post, user: user }) %>
+                                </div>
+
+                                <small class="createdDatum">
+                                    <%= new Date(post.created_at).toLocaleString('nl-BE') %>
+                                </small>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+        <!-- Trips Panel -->
+        <div id="trips-content" class="content-panel">
+            <div class="trips-section">
+                <% if (!trips || trips.length === 0) { %>
+                    <div class="empty-state">
+                        <p>No trips yet. Start planning your adventure! ✈️</p>
+                    </div>
+                <% } else { %>
+                    <div class="trips">
+                        <% trips.forEach(trip => { %>
+                            <div class="trip-card">
+                                <div class="trip-header">
+                                    <h1 class="trip-title"><%= trip.title %></h1>
+                                    <div class="meta">
+                                        <span>Owner: <a href="/user/<%= trip.username %>"><%= trip.username %></a></span>
+                                        <span>Budget: <strong><%= trip.currency %> <%= trip.budget %></strong></span>
+                                        <span><%= trip.description %></span>
+                                    </div>
+                                </div>
+
+                                <div class="participants">
+                                    <h3>Participants</h3>
+                                    <% trip.participants.forEach(p => { %>
+                                        <span class="pill">
+                                            <a href="/user/<%= p.username %>"><%= p.username %></a>
+                                            <% if (p.role) { %> (<%= p.role %>) <% } %>
+                                        </span>
+                                    <% }) %>
+                                </div>
+
+                                <div class="locations">
+                                    <h3>Locations</h3>
+                                    <ul class="locations-list">
+                                        <% trip.locations.forEach((loc, idx) => { %>
+                                            <li>
+                                                <strong><%= idx + 1 %>. <%= loc.city %>, <%= loc.country %></strong>
+                                                <div>Date: <%= new Date(loc.date).toLocaleDateString('nl-BE') %></div>
+                                                <div>Activity: <%= loc.activity %></div>
+                                            </li>
+                                        <% }) %>
+                                    </ul>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+
+    <% } else { %>
+        <!-- Not logged in -->
+        <div class="welcome-section">
+            <h1>Welcome to Globo</h1>
+            <p>Travel far, plan together. Log in to explore and connect with travelers!</p>
+            <a href="/login"><button>Log in</button></a>
+            <a href="/register"><button>Register</button></a>
+        </div>
+    <% } %>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/comments.js"></script>
+<script src="/js/bookmarks.js"></script>
+
+<script>
+    function showContent(content) {
+        // Hide all panels
+        document.querySelectorAll('.content-panel').forEach(panel => {
+            panel.classList.remove('active');
+        });
+        
+        // Remove active from all buttons
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Show selected panel
+        document.getElementById(content + '-content').classList.add('active');
+        
+        // Activate clicked button
+        event.target.classList.add('active');
+    }
+</script>
+
+</body>
+</html>

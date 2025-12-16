@@ -1,0 +1,287 @@
+body {
+    background-image: url('/img/bg-icons.png');
+    background-size: cover;
+    background-repeat: repeat-y;
+    background-position: center top;
+    background-attachment: scroll;
+    min-height: 100vh;
+}
+
+.HomePage {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 90px;
+}
+
+.header-section {
+    background: white;
+    border-radius: 15px;
+    padding: 30px 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header-section h1 {
+    color: var(--login-box-color);
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.header-buttons .button {
+    padding: 12px 24px;
+    background: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.header-buttons .button:hover {
+    background: var(--button-hover-color);
+    transform: translateY(-2px);
+}
+
+/* Toggle Bar - STICKY */
+.content-toggle-bar {
+    position: sticky;
+    top: 70px;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    background: white;
+}
+
+.toggle-btn {
+    padding: 12px 24px;
+    margin: 0 5px;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    background: white;
+    color: #666;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.toggle-btn:hover {
+    background: #d5d5d5;
+    border-color: #aaa;
+}
+
+.toggle-btn.active {
+    background: var(--button-color, #1d1025);
+    color: #fff;
+    border-color: var(--button-color, #281434);
+}
+
+.toggle-btn.active:hover {
+    background: var(--button-hover-color, #27162e);
+}
+
+/* Content Panels */
+.content-panel {
+    display: none;
+    margin-top: 20px;
+}
+
+.content-panel.active {
+    display: block;
+}
+
+/* Posts Section Styling */
+.posts-section {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.posts-section h2 {
+    color: var(--login-box-color);
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--login-box-color);
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.post {
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+
+/* Trips Section Styling */
+.trips-section {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+}
+
+.trips-section h2 {
+    color: var(--login-box-color);
+    font-size: 24px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--login-box-color);
+}
+
+.trips {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.trip-card {
+    background: #f9f9f9;
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid #eee;
+}
+
+.trip-card:hover {
+    transform: translateY(-4px);
+}
+
+.trip-header h1 {
+    font-size: 22px;
+    color: var(--login-box-color);
+    margin-bottom: 15px;
+}
+
+.meta {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.meta span {
+    color: #555;
+}
+
+.meta a {
+    color: var(--button-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.meta a:hover {
+    text-decoration: underline;
+}
+
+.participants, .locations {
+    margin-top: 15px;
+}
+
+.participants h3, .locations h3 {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.pill {
+    display: inline-block;
+    background: var(--button-color);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 4px;
+    font-size: 13px;
+}
+
+.pill a {
+    color: white;
+    text-decoration: none;
+}
+
+.locations-list {
+    list-style: none;
+    padding: 0;
+}
+
+.locations-list li {
+    background: white;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.locations-list strong {
+    color: var(--button-color);
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Not Logged In Section */
+.welcome-section {
+    background: white;
+    border-radius: 15px;
+    padding: 60px 40px;
+    margin-top: 0;
+    text-align: center;
+}
+
+.welcome-section h1 {
+    color: var(--login-box-color);
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.welcome-section p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.welcome-section button {
+    padding: 15px 30px;
+    margin: 0 10px;
+    background: var(--button-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.welcome-section button:hover {
+    background: var(--button-hover-color);
+    transform: translateY(-2px);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #999;
+    font-size: 16px;
+}
+
+hr {
+    display: none;
+}

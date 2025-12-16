@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style-navbar.css">
+    <link rel="stylesheet" href="/css/style-profile.css">
+    <link rel="stylesheet" href="/css/style-map.css">
+    <link rel="stylesheet" href="/css/style-trips.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <meta charset="UTF-8">
+    <title>Trips</title>
+</head>
+
+<body>
+    <%- include('navbar') %>
+    <div class="trips-page">
+        <div class="trips-toggle-bar">
+            <h1 class="trips-title">Trips of <%= username %></h1>
+            <div class="trips-toggle">
+                <button class="toggle-btn active" data-view="list">List</button>
+                <button class="toggle-btn" data-view="map">Map</button>
+            </div>
+        </div>
+
+        <% if (isPrivate && !isOwnProfile && !(following && followed)) { %>
+            <p>This user's trips are private.</p>
+        <% } else { %>
+            <div class="trips-panel active" id="trips-list-view">
+                <% if (trips && trips.length > 0) { %>
+                    <div class="trip-list">
+                        <ul>
+                            <% trips.forEach(trip => { %>
+                                <li>
+                                    <strong><a href="/trip/<%= trip.id %>?from=profile"><%= trip.title %></a></strong> - <%= trip.status %><br>
+                                    
+                                    <% if (isOwnProfile) { %>
+                                        <form action="/trips/delete" method="POST" style="display:inline;">
+                                            <input type="hidden" name="id" value="<%= trip.id %>">
+                                            <button type="submit">Delete</button>
+                                        </form>
+                                        <form action="/planner/edit/<%= trip.id %>" method="GET" style="display:inline;">
+                                            <button type="submit">Edit</button><br>
+                                        </form>
+                                    <% } %>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    </div>
+                <% } else { %>
+                    <p>No trips or locations added yet.</p>
+                <% } %>
+            </div>
+
+            <div class="trips-panel" id="trips-map-view">
+                <div id="map-layout">
+                    <div id="map-sidebar">
+                        <h3>Filters</h3>
+                        <label class="filter-option">
+                            <input type="checkbox" id="trips-map-filter-wishlist" checked>
+                            Wishlist
+                        </label>
+                        <label class="filter-option">
+                            <input type="checkbox" id="trips-map-filter-visited" checked>
+                            Visited
+                        </label>
+                        <div id="map-stats">
+                            <h3>Stats</h3>
+                            <p id="trips-map-visited">Visited: 0</p>
+                            <p id="trips-map-wishlist">Wishlist: 0</p>
+                            <div id="total-stat"> <p id="trips-map-total">Total Locations: 0</p></div>
+                        </div>
+                    </div>
+                    <div id="map"></div>
+                </div>
+            </div>
+        <% } %>
+
+        <a href="<%= isOwnProfile ? '/profile' : '/user/' + username %>">
+            <button type="button">Back to profile</button>
+        </a>
+    </div>
+
+    <div id="tripsPageData" data-owner="<%= username %>"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="/js/trips-map.js"></script>
+</body>
+
+</html>
