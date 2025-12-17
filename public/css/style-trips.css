@@ -17,7 +17,7 @@
 .trips-title {
     margin: 0;
     font-size: 28px;
-    color: #2b3a42;
+    text-decoration: none;
 }
 
 .trips-toggle-bar .trips-toggle {

@@ -1,63 +1,14 @@
 /* =========================
-   HEADER
-========================= */
-
-.header-section {
-    background-color: var(--bg-color);
-    position: sticky;
-    top: 100px; /* Pas aan op basis van je navbar hoogte */
-    box-shadow: 0px 0px 4px black;
-    border-radius: 15px;
-    z-index: 10;
-    padding: 20px 0;
-    margin-bottom: 50px;
-    height: 100px;
-}
-
-.header-spacer {
-    height: 35%;
-}
-
-
-/* =========================
-   POSTS LAYOUT
-========================= */
-
-/* Wrapper zorgt voor scroll */
-.posts-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-/* Posts section normaal positioneren (geen top gebruiken) */
-.posts-section {
-    z-index: 1;
-    padding: 20px 0;
-    margin-bottom: 20px;
-    width: 500px;
-}
-
-/* Posts Container */
-.posts-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-}
-
-
-/* =========================
    POST CARD
 ========================= */
 
 .post {
     background: white;
-    padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
-    margin: 50px;
+    margin: 0px;
+    padding: auto;
 }
 
 .post:hover {
@@ -71,7 +22,7 @@
 
 .post-header {
     display: flex;
-    align-items: center; /* of flex-start als je hoger wil */
+    align-items: center; 
     gap: 20px;
 }
 

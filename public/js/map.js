@@ -92,13 +92,11 @@ async function renderTripsOnMap() {
 
             const dateString = new Date(loc.date).toLocaleDateString("nl-BE");
 
-            marker.bindPopup(`
-                <strong>${loc.country}</strong><br>
-                ${loc.city}<br>
-                ${dateString}<br>
-                ${loc.activity}<br>
-                Status: ${status}
-            `);
+            marker.bindPopup(
+                '<a href="/trip/' + trip.id + '" class="map-trip-link">' +
+                trip.title +
+                '</a>'
+            );
         }
     }
     updateMapStats(trips);

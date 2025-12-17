@@ -1,7 +1,11 @@
+body{
+    overflow-y:hidden;
+}
+
 #map-layout {
     display: flex;
-    margin: auto;
-    margin-top: 9%;
+    margin: 0 auto;
+    margin-bottom: 100px;
 }
 
 #map {
@@ -9,17 +13,6 @@
     width: 800px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-
-}
-
-.map-title {
-    color: rgb(63, 63, 63);
-    position: absolute;
-    top: 7%;
-    left: 170px;
-    padding-top: 20px;
-    font-family:'Times New Roman', Times, serif;
-    width: 120px;
 
 }
 
@@ -52,4 +45,19 @@
 
 input[type="checkbox"] {
     accent-color:  var(--button-color); 
+}
+
+.map-trip-link {
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #19141f;
+}
+
+.map-trip-link:hover {
+    color: #19141f;
+}
+
+.map-trip-link[href] {
+    color: #19141f;
 }

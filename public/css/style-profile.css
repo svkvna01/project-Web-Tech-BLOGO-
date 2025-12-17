@@ -1,3 +1,7 @@
+body {
+    overflow-y: hidden;
+}
+
 .profile-header {
     background-color: var(--login-box-color);
     box-shadow:0 4px 20px black;
@@ -8,6 +12,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+
     gap: 40px;
 }
 

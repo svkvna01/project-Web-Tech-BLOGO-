@@ -1,32 +1,36 @@
 body {
     background-image: url('/img/bg-icons.png');
     background-size: cover;
-    background-repeat: repeat-y;
     background-position: center top;
-    background-attachment: scroll;
+    background-attachment: fixed;
     min-height: 100vh;
+    overflow-y: hidden;
+    margin: 0;
 }
 
 .HomePage {
-    max-width: 1200px;
+    max-width: 900px;       /* houd je content beperkt */
     margin: 0 auto;
-    padding: 20px;
-    padding-top: 90px;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    /* center horizontaal */
+}
+/* Header Content - Horizontal Layout */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
 }
 
-.header-section {
-    background: white;
-    border-radius: 15px;
-    padding: 30px 40px;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.header-section h1 {
+.header-content h1 {
     color: var(--login-box-color);
     font-size: 32px;
-    margin-bottom: 20px;
+    margin: 0;
+    white-space: nowrap;
 }
+
 
 .header-buttons {
     display: flex;
@@ -51,229 +55,173 @@ body {
     background: var(--button-hover-color);
 }
 
-/* Toggle Bar - STICKY */
+
+/* Toggle */
 .content-toggle-bar {
-    position: sticky;
-    top: 70px;
-    z-index: 100;
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
-    padding: 20px 0;
-    background: white;
+    gap: 10px;
+    margin-bottom: 5px;
+    position: sticky;
+    top: 90px;
+    padding: 8px 0;
+    border-radius: 10px;
+     margin-top: 70px;
+    z-index: 4;
 }
 
 .toggle-btn {
     padding: 12px 24px;
-    margin: 0 5px;
     border-radius: 10px;
     border: 2px solid #ccc;
     background: white;
     color: #666;
+    cursor: pointer;
     font-weight: 500;
     font-size: 16px;
 }
 
-.toggle-btn:hover {
-    background: #d5d5d5;
-    border-color: #aaa;
-}
-
 .toggle-btn.active {
-    background: var(--button-color, #1d1025);
-    color: #fff;
-    border-color: var(--button-color, #281434);
-}
-
-.toggle-btn.active:hover {
-    background: var(--button-hover-color, #27162e);
+    background: var(--button-color);
+    color: white;
+    border-color: var(--button-color);
 }
 
 /* Content Panels */
 .content-panel {
     display: none;
-    margin-top: 20px;
 }
 
 .content-panel.active {
     display: block;
 }
 
-/* Posts Section Styling */
-.posts-section {
-    background: white;
-    border-radius: 15px;
-    padding: 30px;
+
+
+/* Chrome, Edge, Safari */
+.posts-section::-webkit-scrollbar,
+.trips-section::-webkit-scrollbar {
+    width: 6px;
 }
 
-.posts-section h2 {
-    color: var(--login-box-color);
-    font-size: 24px;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--login-box-color);
+.posts-section::-webkit-scrollbar-track,
+.trips-section::-webkit-scrollbar-track {
+    background: #eee;
 }
 
-.posts {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+.posts-section::-webkit-scrollbar-thumb,
+.trips-section::-webkit-scrollbar-thumb {
+    background: var(--login-box-color);
+    border-radius: 10px;
 }
 
-.post {
-    background: #f9f9f9;
-    border-radius: 12px;
-    padding: 20px;
-    border: 1px solid #eee;
+.posts-section::-webkit-scrollbar-thumb:hover,
+.trips-section::-webkit-scrollbar-thumb:hover {
+    background: var(--button-hover-color);
 }
-
-/* Trips Section Styling */
+/* Posts & Trips Scroll */
 .trips-section {
     background: white;
     border-radius: 15px;
-    padding: 30px;
+    padding: 20px;
+    width: 100%;           /* volle breedte van container */
+    max-width: 850px;       /* iets kleiner dan HomePage voor padding */
+    overflow-y: auto;
+
+    max-height: calc(90vh - 250px); /* pas hoogte aan zodat hele sectie scrollbaar is */
 }
 
+.posts-section {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 100%;           /* volle breedte van container */
+    max-width: 850px;       /* iets kleiner dan HomePage voor padding */
+    overflow-y: auto;
+           /* verticale spacing */
+    max-height: calc(90vh - 250px); /* pas hoogte aan zodat hele sectie scrollbaar is */
+
+}
+
+.posts-section h2,
 .trips-section h2 {
     color: var(--login-box-color);
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 2px solid var(--login-box-color);
 }
 
-.trips {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 20px;
+/* Posts container padding voor volledig zichtbare posts */
+.posts {
+    padding-bottom: 20px;
 }
 
-.trip-card {
-    background: #f9f9f9;
-    border-radius: 12px;
-    padding: 20px;
-    border: 1px solid #eee;
-}
-
-.trip-card:hover {
-    transform: translateY(-4px);
-}
-
-.trip-header h1 {
-    font-size: 22px;
-    color: var(--login-box-color);
-    margin-bottom: 15px;
-}
-
-.meta {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-bottom: 15px;
-    font-size: 14px;
-}
-
-.meta span {
-    color: #555;
-}
-
-.meta a {
-    color: var(--button-color);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.meta a:hover {
-    text-decoration: underline;
-}
-
-.participants, .locations {
-    margin-top: 15px;
-}
-
-.participants h3, .locations h3 {
-    font-size: 16px;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.pill {
-    display: inline-block;
-    background: var(--button-color);
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    margin: 4px;
-    font-size: 13px;
-}
-
-.pill a {
-    color: white;
-    text-decoration: none;
-}
-
-.locations-list {
-    list-style: none;
-    padding: 0;
-}
-
-.locations-list li {
-    background: white;
-    padding: 12px;
-    margin-bottom: 8px;
-    border-radius: 8px;
-    font-size: 14px;
-}
-
-.locations-list strong {
-    color: var(--button-color);
-    display: block;
-    margin-bottom: 5px;
-}
-
-/* Not Logged In Section */
+/* Welcome Section - witte achtergrond */
 .welcome-section {
-    background: white;
+    background-color: white;
     border-radius: 15px;
     padding: 60px 40px;
-    margin-top: 0;
     text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-top: 50px;
 }
 
 .welcome-section h1 {
     color: var(--login-box-color);
     font-size: 42px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 .welcome-section p {
     font-size: 18px;
     color: #666;
     margin-bottom: 30px;
+    line-height: 1.6;
 }
 
 .welcome-section button {
-    padding: 15px 30px;
+    padding: 14px 32px;
     margin: 0 10px;
     background: var(--button-color);
     color: white;
     border: none;
     border-radius: 10px;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .welcome-section button:hover {
     background: var(--button-hover-color);
+    transform: translateY(-2px);
 }
 
+/* Empty state styling */
 .empty-state {
     text-align: center;
-    padding: 40px;
-    color: #999;
+    padding: 40px 20px;
+    color: #666;
     font-size: 16px;
 }
 
-hr {
-    display: none;
+/* Responsive - stack op kleinere schermen */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .header-content h1 {
+        font-size: 24px;
+        white-space: normal;
+    }
+    
+    .header-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 }
+
