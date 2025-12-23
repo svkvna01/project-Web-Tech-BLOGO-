@@ -62,6 +62,9 @@ async function renamePostsUser(oldUsername, newUsername) {
     await db.query("UPDATE posts SET username = ? WHERE username = ?", [newUsername, oldUsername]);
 }
 
+
+//Retrieves all root comments for a specific post.
+// Root comments are comments that do not have a parent comment.
 async function getRootCommentsForPost(postId){
     const sql = `
         SELECT * 
@@ -74,7 +77,8 @@ async function getRootCommentsForPost(postId){
     return comments;
 
 }
-
+//Retrieves all replies for a specific comment.
+ //Replies are comments that have a parent comment.(it is a reply to a comment)
 async function getRepliesForComment(commentId){
     const sql = `
         SELECT * 
@@ -88,6 +92,7 @@ async function getRepliesForComment(commentId){
 
 }
 
+//Adds a new comment or reply to a post.
 async function addComment(post_id, username, caption , parent_id) {
     const sql = "INSERT INTO comments (post_id, username, caption , parent_id) VALUES (?, ?, ? , ?)";
     const [result] = await db.query(sql, [post_id, username, caption , parent_id]);
@@ -95,50 +100,28 @@ async function addComment(post_id, username, caption , parent_id) {
     return result.insertId; 
 }
 
+//Deletes a comment owned by the given user.
 async function deleteComment(id, username) {
-    console.log("=== DELETE COMMENT DEBUG ===");
-    console.log("Received ID:", id);
-    console.log("Received username:", username);
-
     const sql = "DELETE FROM comments WHERE id = ? AND username = ?";
-    console.log("SQL Query:", sql);
-    console.log("SQL Params:", [id, username]);
-
-    const [result] = await db.query(sql, [id, username]);
-
-    console.log("DB Result:", result);
-    console.log("Affected rows:", result.affectedRows);
-    console.log("=== END DEBUG ===");
-
+    const [result] = await db.query(sql, [id, username]);;
     return result.affectedRows === 1;
 }
 
 
-
+//Updates the caption of an existing comment.
 async function updateComment(comment_id, username, caption) {
-    console.log("=== UPDATE COMMENT DB DEBUG ===");
-    console.log("comment_id:", comment_id);
-    console.log("username:", username);
-    console.log("caption:", caption);
-
     const sql = `
         UPDATE comments
         SET caption = ?
         WHERE id = ? AND username = ?
     `;
-    console.log("SQL:", sql);
-    console.log("Params:", [caption, comment_id, username]);
-
+    
     const [result] = await db.query(sql, [caption, comment_id, username]);
-
-    console.log("DB Result:", result);
-    console.log("Affected rows:", result.affectedRows);
-    console.log("=== END DB DEBUG ===");
 
     return result.affectedRows === 1;
 }
 
-//haal profil picture van de user dat het post heeft gemaakt 
+//get profil picture from the user who made the post
 async function getProfilPictureForPost(postId) {
 
     const sql = `
