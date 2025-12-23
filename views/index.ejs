@@ -17,7 +17,7 @@
     <%- include('navbar') %>
 
         <div class="HomePage">
-            <!-- check if user are logged in --!>
+            <!-- check if user are logged in -->
             <% if (user) { %>
                
                     <!-- welcome message and main actions create new post or new trip -->
@@ -39,17 +39,17 @@
                 <div id="posts-content" class="content-panel active">
                     <div class="posts-section">
 
-                        <!--Show a message if there are not posts yet--!>
+                        <!--Show a message if there are not posts yet-->
                         <% if (posts.length===0) { %>
                             <div class="empty-state">
                                 <p>No posts yet. Be the first to share something!</p>
                             </div>
                             <% } else { %>
-                                <!-- walk across all existing posts --!>
+                                <!-- walk across all existing posts -->
                                 <div class="posts">
                                     <% posts.forEach(post=> { %>
 
-                                        <!-- single post section--!>
+                                        <!-- single post section-->
                                         <div class="post">
                                             <div class="post-header">
                                                 <img src="<%= post.profilPic || '/img/pfp.jpg' %>" class="pfp">
@@ -68,7 +68,7 @@
                                                 <% } %>
 
 
-                                                    <!-- Show delete button only if user the author is of the post--!>
+                                                    <!-- Show delete button only if user the author is of the post-->
                                                     <% if (user.username===post.username) { %>
                                                         <form action="/posts/delete" method="POST"
                                                             style="display:inline;">
@@ -216,3 +216,4 @@
 
 
 </html>
+
