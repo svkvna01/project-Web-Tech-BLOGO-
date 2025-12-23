@@ -1,11 +1,9 @@
-/* =========================
-   HEADER
-========================= */
+/* HEADER */
 
 .header-section {
     background-color: var(--bg-color);
     position: sticky;
-    top: 100px; /* Pas aan op basis van je navbar hoogte */
+    top: 100px; 
     box-shadow: 0px 0px 4px black;
     border-radius: 15px;
     z-index: 10;
@@ -19,18 +17,15 @@
 }
 
 
-/* =========================
-   POSTS LAYOUT
-========================= */
+/* POSTS LAYOUT */
 
-/* Wrapper zorgt voor scroll */
+/* Wrapper provides scroll * /
 .posts-wrapper {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-/* Posts section normaal positioneren (geen top gebruiken) */
 .posts-section {
     z-index: 1;
     padding: 20px 0;
@@ -47,9 +42,7 @@
 }
 
 
-/* =========================
-   POST CARD
-========================= */
+/* POST CARD */
 
 .post {
     background: white;
@@ -65,13 +58,11 @@
 }
 
 
-/* =========================
-   POST HEADER
-========================= */
+/*  POST HEADER*/
 
 .post-header {
     display: flex;
-    align-items: center; /* of flex-start als je hoger wil */
+    align-items: center; 
     gap: 20px;
 }
 
@@ -84,15 +75,13 @@
 .postUserName {
     display: inline-block;
     font-size: 30px;
-    margin-top: -4px; /* kleine visuele correctie */
+    margin-top: -4px; 
     font-weight: 600;
     color: black;
 }
 
 
-/* =========================
-   POST CONTENT
-========================= */
+/* POST CONTENT*/
 
 .post h3 {
     margin: 0 0 10px 0;
@@ -130,9 +119,7 @@
 }
 
 
-/* =========================
-   POST IMAGES
-========================= */
+/*  POST IMAGES*/
 
 .post-images {
     display: flex;
@@ -150,31 +137,27 @@
     cursor: pointer;
 }
 
-/* Als er meerdere foto's zijn */
+/ * If there are multiple photos * /
 .post-images img:not(:only-child) {
     max-width: calc(50% - 5px);
     max-height: 350px;
 }
 
-/* Als er 3+ foto's zijn */
+/ * If there are 3+ photos * /
 .post-images:has(img:nth-child(3)) img {
     max-width: calc(33.333% - 7px);
     max-height: 250px;
 }
 
 
-/* =========================
-   POST ACTIONS
-========================= */
+/* POST ACTIONS*/
 
 .post form {
     margin-top: 15px;
 }
 
 
-/* =========================
-   BOOKMARK BUTTON
-========================= */
+/* BOOKMARK BUTTON*/
 
 .bookmark-btn {
     width: 30px;
@@ -195,9 +178,7 @@
 }
 
 
-/* =========================
-   DIVIDERS & EMPTY STATE
-========================= */
+/* DIVIDERS & EMPTY STATE*/
 
 hr {
     border: none;
@@ -213,9 +194,7 @@ hr {
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* RESPONSIVE*/
 
 @media (max-width: 768px) {
     .home-container {
