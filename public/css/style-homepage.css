@@ -9,12 +9,12 @@ body {
 }
 
 .HomePage {
-    max-width: 900px;       /* houd je content beperkt */
+    max-width: 900px;       /* keep your content limited */
     margin: 0 auto;
     padding: 10px 20px;
     display: flex;
     flex-direction: column;
-    align-items: center;    /* center horizontaal */
+    align-items: center;    /* center horizontally */
 }
 /* Header Content - Horizontal Layout */
 .header-content {
@@ -124,22 +124,22 @@ body {
     background: white;
     border-radius: 15px;
     padding: 20px;
-    width: 100%;           /* volle breedte van container */
-    max-width: 850px;       /* iets kleiner dan HomePage voor padding */
+    width: 100%;           /* full width of container */
+    max-width: 850px;       /* slightly smaller than HomePage for padding  */
     overflow-y: auto;
 
-    max-height: calc(90vh - 250px); /* pas hoogte aan zodat hele sectie scrollbaar is */
+    max-height: calc(90vh - 250px); /* adjust height so that whole section is scrollable */
 }
 
 .posts-section {
     background: white;
     border-radius: 15px;
     padding: 20px;
-    width: 100%;           /* volle breedte van container */
-    max-width: 850px;       /* iets kleiner dan HomePage voor padding */
+    width: 100%;           /* full width of container */
+    max-width: 850px;       /*  slightly smaller than HomePage for padding */
     overflow-y: auto;
            /* verticale spacing */
-    max-height: calc(90vh - 250px); /* pas hoogte aan zodat hele sectie scrollbaar is */
+    max-height: calc(90vh - 250px); /* adjust height so that whole section is scrollable  */
 
 }
 
@@ -152,12 +152,12 @@ body {
     border-bottom: 2px solid var(--login-box-color);
 }
 
-/* Posts container padding voor volledig zichtbare posts */
+/* Posts container padding for fully visible posts*/
 .posts {
     padding-bottom: 20px;
 }
 
-/* Welcome Section - witte achtergrond */
+/* Welcome Section  white background */
 .welcome-section {
     background-color: white;
     border-radius: 15px;
@@ -206,7 +206,7 @@ body {
     font-size: 16px;
 }
 
-/* Responsive - stack op kleinere schermen */
+/* Responsive - stack on smaller screens */
 @media (max-width: 768px) {
     .header-content {
         flex-direction: column;
