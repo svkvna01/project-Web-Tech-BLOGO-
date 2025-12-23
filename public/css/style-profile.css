@@ -75,7 +75,7 @@ body {
     color: var(--login-box-color);
 }
 
-/* afstand tussen icons*/
+/ * distance between icons * /
 table {
     border-spacing: 40px; 
 }
