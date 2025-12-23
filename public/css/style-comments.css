@@ -1,6 +1,4 @@
-/* =========================
-   GLOBAL
-========================= */
+/** GLOBAL */
 
 textarea {
     width: 80%;
@@ -11,9 +9,7 @@ textarea {
     resize: none;
 }
 
-/* =========================
-   COMMENTS PANEL
-========================= */
+/** COMMENTS PANEL*/
 
 .comments-panel {
     position: fixed;
@@ -21,12 +17,12 @@ textarea {
     left: 50%;
     width: 420px;
     height: 65%;
-    transform: translate(-50%, -50%) scale(0.95);
+    transform: translate(-50%, -50%) scale(0.95); 
     opacity: 0;
     background: var(--bg-color);
     border-radius: 20px;
     padding: 14px;
-    transition: all 0.25s ease;
+    transition: all 0.25s ease; /** Smooth transition when opening or closing the panel */
     z-index: 999;
     overflow-y: auto;
     pointer-events: none;
@@ -47,9 +43,7 @@ textarea {
     margin-bottom: 12px;
 }
 
-/* =========================
-   COMMENT
-========================= */
+/**COMMENT */
 
 .comment {
     background: white;
@@ -62,15 +56,14 @@ textarea {
     font-size: 14px;
 }
 
+/** Action buttons for a comment (reply, menu, etc.) */
 .comment-actions {
     display: flex;
     gap: 12px;
     margin-top: 4px;
 }
 
-/* =========================
-   COMMENT STATES
-========================= */
+/** COMMENT STATES */
 
 .comment-menu,
 .comment-edit,
@@ -90,9 +83,7 @@ textarea {
     display: block;
 }
 
-/* =========================
-   REPLIES
-========================= */
+/** REPLIES */
 
 .comment-replies {
     margin-left: 14px;
@@ -133,9 +124,7 @@ textarea {
     display: block;
 }
 
-/* =========================
-   TEXT BUTTONS
-========================= */
+/** TEXT BUTTONS*/
 
 .text-btn {
     background: none;
@@ -155,9 +144,7 @@ textarea {
     color: #c0392b;
 }
 
-/* =========================
-   COMMENT FORM BUTTON
-========================= */
+/** COMMENT FORM BUTTON */
 
 .submitComment-btn {
     margin-top: 6px;
@@ -173,9 +160,7 @@ textarea {
     background-color: var(--button-hover-color);
 }
 
-/* =========================
-   OPEN COMMENTS BUTTON
-========================= */
+/** OPEN COMMENTS BUTTON */
 
 .toggle-comments-btn {
     background: none;
