@@ -41,18 +41,18 @@ button:hover {
 }
 
 
-/* breedte */
+/* width */
 ::-webkit-scrollbar {
   width: 10px;
   border-radius: 10px;
 }
 
-/* achtergrond */
+/* background */
 ::-webkit-scrollbar-track {
   background: var(--bg-color)
 }
 
-/* schuifknop */
+/* slider */
 ::-webkit-scrollbar-thumb {
   background:  #eda2b5;
   border-radius: 10px;
@@ -63,5 +63,6 @@ button:hover {
   background: var(--login-box-color);
  
 }
+
 
 
