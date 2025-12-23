@@ -1,5 +1,11 @@
 console.log("comments.js loaded");
 
+/**
+ * Opens and closed the comments panel for a post
+ * The post ID is retrieved from the clicked button using a data attribute post-id.
+ * This allows the correct comments panel to be opened or closed.
+ */
+
 function openComments(button) {
     const postId = button.dataset.postId;
     document
@@ -13,6 +19,11 @@ function closeComments(button) {
         .getElementById("comments-panel-" + postId)
         .classList.remove("open");
 }
+
+/**
+* This function ensures that the user does not immediately see options such as ‘delete ’ and ‘edit ’ 
+* These options only become visible when the user clicks 
+* the corresponding button. **/
 
 function toggleMenu(btn) {
     const comment = btn.closest(".comment");
@@ -44,8 +55,13 @@ function toggleReplyEdit(btn) {
 }
 
 
+/**
+ * Handles reply, edit and delete actions inside an open comments panel.
+ * The panel is refreshed without reloading the rest of the page,
+ * so changes remain visible to the user.
+ */
 function submitCommentPanel(e, form) {
-    e.preventDefault();
+    e.preventDefault(); 
 
     const $form = $(form);
     const $panel = $form.closest(".comments-panel");
@@ -60,6 +76,11 @@ function submitCommentPanel(e, form) {
         );
     });
 }
+
+/**
+ * Submits a new comment without reloading the entire page,
+ * so the user stays on the same post while the comments are updated.
+ */
 
 function submitCommentPost(e, form) {
     e.preventDefault();
