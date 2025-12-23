@@ -64,19 +64,19 @@ app.use((req, res, next) => {
 
 app.get('/', async (req, res) => {
     if (req.session.user) {
-        // Als ingelogd, toon alle posts
+        // When logged in, show all posts
         const posts = await getAllPosts(req.session.user.username);
         const trips = await getAllTrips();
         const currentUser = req.session.user.username;
 
-        // VOEG TOE: Check isSaved voor elke post
+        //  ADD TO: Check isSaved for every post
         for (let post of posts) {
             post.isSaved = await isPostSavedByUser(currentUser, post.id);
             // Root comments 
             post.comments = await getRootCommentsForPost(post.id); 
             post.profilPic = await getProfilPictureForPost(post.id);
 
-            // Voor elke root comment: replies ophalen 
+            //For each root comment: get replies  
             for (let comment of post.comments) { 
                 comment.replies = await getRepliesForComment(comment.id);
             } 
@@ -86,10 +86,10 @@ app.get('/', async (req, res) => {
         res.render('index', {
             posts,
             trips,
-            user: req.session.user  // Voeg ook user toe voor de template
+            user: req.session.user  // Also add user for the template
         });
     } else {
-        // Als niet ingelogd, toon index zonder posts
+        // If not logged in, show index without posts
         res.render('index', { posts: [] });
     }
 });
@@ -255,7 +255,7 @@ app.post('/planner/create', requireAuth, async (req, res) => {
 
         res.json({ success: true, tripId });
     } catch (err) {
-        console.error("❌ Error saving trip:", err);
+        console.error("Error saving trip:", err);
         res.status(500).json({ success: false, error: err.message });
     }
 });
@@ -327,7 +327,7 @@ app.get('/planner/messages', async (req, res) => {
     res.json({ messages });
 });
 
-// GET friends the current user follows (to show "Add Friends") NIEUWWWW
+// GET friends the current user follows (to show "Add Friends") 
 app.get('/api/friends', requireAuth, async (req, res) => {
     try {
         const username = req.session.user.username;
@@ -517,12 +517,12 @@ app.get('/user/:username/following', requireAuth, async (req, res) => {
     res.render('following', { username, followings, isOwnProfile, isPrivate, following, followed });
 });
 
-// Pagina om een nieuwe post te maken
+// Page to create a new post
 app.get('/posts/new', requireAuth, (req, res) => {
     res.render('newPost');
 });
 
-// Post toevoegen
+// Add post
 app.post('/posts/new', requireAuth, upload.array('images', 5), async (req, res) => {
     const username = req.session.user.username;
     const caption = req.body.caption;
@@ -532,19 +532,12 @@ app.post('/posts/new', requireAuth, upload.array('images', 5), async (req, res) 
     res.redirect(`/posts/user/${username}`);
 });
 
-// Alle posts bekijken
-//app.get('/posts', requireAuth, async (req, res) => {
-//  const posts = await getAllPosts(req.session.user.username);
-//res.render('posts', { posts });
-
-//post.isSaved = await isPostSavedByUser(req.session.user.username, post.id);
-//});
 
 app.get('/posts', requireAuth, async (req, res) => {
     const posts = await getAllPosts(req.session.user.username);
     const currentUser = req.session.user.username;
 
-    // Check isSaved voor elke post
+    // Check isSaved for each post
     for (let post of posts) {
         post.isSaved = await isPostSavedByUser(currentUser, post.id);
     }
@@ -556,7 +549,7 @@ app.get('/posts', requireAuth, async (req, res) => {
     });
 });
 
-// Posts van specifieke user
+// Posts of specific user
 app.get('/posts/user/:username', requireAuth, async (req, res) => {
     const username = req.params.username;
     const currentUser = req.session.user.username;
@@ -570,7 +563,7 @@ app.get('/posts/user/:username', requireAuth, async (req, res) => {
 
     const posts = canViewPosts ? await getPostsForUser(username) : [];
 
-    // NIEUWWW
+    
     for (let post of posts) {
         post.isSaved = await isPostSavedByUser(currentUser, post.id);
     }
@@ -578,7 +571,7 @@ app.get('/posts/user/:username', requireAuth, async (req, res) => {
     res.render('userPosts', { posts, username, isOwnProfile, isPrivate, following, followed });
 });
 
-// Post verwijderen
+// Delete a post
 app.post('/posts/delete', requireAuth, async (req, res) => {
     const username = req.session.user.username;
     const { id } = req.body;
@@ -653,6 +646,7 @@ app.get('/api/bookmarks', requireAuth, async (req, res) => {
     res.json(bookmarks);
 });
 
+// add a new comment 
 app.post('/comments/new', requireAuth, async (req, res) => {
     const postId = req.body.post_id; 
     const caption = req.body.caption;
@@ -667,6 +661,7 @@ app.post('/comments/new', requireAuth, async (req, res) => {
       res.redirect(req.get('Referrer')); 
 });
 
+//delete a comment
 app.post('/comments/delete', requireAuth, async (req, res) => {
     const username = req.session.user.username; 
     const id = req.body.id; console.log("USER:", username);
@@ -674,6 +669,7 @@ app.post('/comments/delete', requireAuth, async (req, res) => {
     res.redirect(req.get('Referrer'));
  });
 
+//edit a comment
  app.post('/comments/update', requireAuth, async (req, res) => {
     const username = req.session.user.username; 
     const id = req.body.id; 
