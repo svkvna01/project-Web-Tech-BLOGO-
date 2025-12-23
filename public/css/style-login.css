@@ -43,7 +43,7 @@ h2 {
   width: 45%;            
 }
 
-/* Algemene stijl voor alle invoervelden */
+/* General style for all input fields  */
 input[type="text"],
 input[type="password"],
 input[type="email"],
@@ -58,3 +58,4 @@ input[type="date"] {
   font-size: 16px;
   height: 45px;
 }
+
